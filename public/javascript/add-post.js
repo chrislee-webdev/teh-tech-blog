@@ -1,5 +1,5 @@
-async function newFormHandler(event) {
-    event.preventDefault();
+async function newFormHandler(e) {
+    e.preventDefault();
 
     const title = document.querySelector('input[name="post-title"]').value;
     const post_url = document.querySelector('input[name="post-url"]').value;
