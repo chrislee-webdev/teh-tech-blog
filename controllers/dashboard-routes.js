@@ -40,7 +40,10 @@ router.get('/', withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
-    Post.findOne(req.params.id, {
+    Post.findOne({
+        where: {
+            id: req.params.id
+        },
         attributes: [
             'id',
             'post_url',
@@ -64,7 +67,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
     })
     .then(dbPostData => {
         if (dbPostData) {
-            const post = dbPostData.get({ plain: text });
+            const post = dbPostData.get({ plain: false });
 
             res.render('edit-post', {
                 post,
